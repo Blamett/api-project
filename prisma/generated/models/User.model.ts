@@ -1,7 +1,7 @@
-import { IsInt, IsDefined, IsDate, IsString, IsIn, IsEmail, IsOptional, Length } from "class-validator";
-import "./";
-import { getEnumValues } from "../helpers";
+import { IsDate, IsDefined, IsEmail, IsIn, IsInt, IsOptional, IsString, Matches } from "class-validator";
 import { Role } from "../enums";
+import { getEnumValues } from "../helpers";
+import "./";
 
 export class User {
 
@@ -28,7 +28,9 @@ export class User {
 
     @IsDefined()
     @IsString()
-    @Length(6)
+    @Matches(new RegExp('(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8}'), {
+        message: 'Password must be 8 characters long, have one uppercase letter, one digit and one especial character'
+    })
     password!: string;
 
     @IsOptional()
