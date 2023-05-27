@@ -1,18 +1,21 @@
-import { IsInt, IsDefined, IsDate, IsString, IsIn } from "class-validator";
+import { IsInt, IsDefined, IsDate, IsString, IsIn, IsEmail, IsOptional, Length } from "class-validator";
 import "./";
 import { getEnumValues } from "../helpers";
 import { Role } from "../enums";
 
 export class User {
 
+    @IsOptional()
     @IsInt()
-    id!: number;
+    id?: number;
 
+    @IsOptional()
     @IsDate()
-    createdAt!: Date;
+    createdAt?: Date;
 
+    @IsOptional()
     @IsDate()
-    updatedAt!: Date;
+    updatedAt?: Date;
 
     @IsDefined()
     @IsString()
@@ -20,12 +23,15 @@ export class User {
 
     @IsDefined()
     @IsString()
+    @IsEmail()
     email!: string;
 
     @IsDefined()
     @IsString()
+    @Length(6)
     password!: string;
 
+    @IsOptional()
     @IsIn(getEnumValues(Role))
-    role!: Role;
+    role?: Role;
 }
