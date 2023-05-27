@@ -1,6 +1,7 @@
 import { AuthModule } from './routes/auth/auth.module';
+import { UserController } from './routes/user/user.controller';
 import { UserModule } from './routes/user/user.module';
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 
 @Module({
   imports: [
@@ -14,4 +15,5 @@ import { Module } from '@nestjs/common';
     
   ],
 })
-export class AppModule { }
+export class AppModule {}
+
