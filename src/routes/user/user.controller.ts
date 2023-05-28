@@ -10,5 +10,5 @@ export class UserController {
     @Post()
     create(@Body() user: User) {
       return this.userService.createNewUser(user)
-    }  
+    }
 }
