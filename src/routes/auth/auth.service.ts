@@ -19,6 +19,7 @@ export class AuthService {
             
             const payload = {sub: user.id, email: user.email}
 
+            // You don't need to pass the options in jwtService.sign because they were already defined in the module
             const token = this.jwtService.sign(payload)
             
             return {token: token}
